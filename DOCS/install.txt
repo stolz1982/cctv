@@ -1,1 +1,1 @@
-sudo apt-get install git mysql-client
+sudo apt-get install git mysql-client python-pip
