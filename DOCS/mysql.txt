@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS autokennzeichen (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    autokennzeichen VARCHAR(255) NOT NULL,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)  ENGINE=INNODB;
+
+CREATE USER 'reader'@'192.168.2.206' IDENTIFIED BY 'reader';
+
+GRANT SELECT ON `home`.'autokennzeichen' TO 'reader'@'192.168.206';
+
+insert into autokennzeichen(autokennzeichen,description) values ('NAU-AR 162','VW Golf Sportsvan');
+
+
+
+
