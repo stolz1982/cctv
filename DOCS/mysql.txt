@@ -7,10 +7,21 @@ CREATE TABLE IF NOT EXISTS autokennzeichen (
 
 CREATE USER 'reader'@'192.168.2.206' IDENTIFIED BY 'reader';
 
-GRANT SELECT ON `home`.'autokennzeichen' TO 'reader'@'192.168.206';
+GRANT SELECT ON `home`.'autokennzeichen' TO 'reader'@'192.168.204';
 
 insert into autokennzeichen(autokennzeichen,description) values ('NAU-AR 162','VW Golf Sportsvan');
 
 
+CREATE TABLE IF NOT EXISTS verkehrsdaten (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    autokennzeichen VARCHAR(255) NOT NULL,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)  ENGINE=INNODB;
 
+show grants for 'reader'@'192.168.2.204';
 
+CREATE USER 'reader'@'192.168.2.204' IDENTIFIED BY 'reader';
+GRANT SELECT ON `home`.`verkehrsdaten` TO 'reader'@'192.168.204';
+GRANT INSERT ON `home`.`verkehrsdaten` TO 'reader'@'192.168.204';
+GRANT UPDATE ON `home`.`verkehrsdaten` TO 'reader'@'192.168.204';
