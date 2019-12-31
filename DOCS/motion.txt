@@ -1,0 +1,2 @@
+https://tutorials-raspberrypi.de/raspberry-pi-ueberwachungskamera-livestream-einrichten/
+installation motion
