@@ -25,5 +25,5 @@ with open('/etc/default/foo') as file:
     file.close()
     
     
-  2. ROI
-  3. tresholding it
+    
+https://circuitdigest.com/microcontroller-projects/license-plate-recognition-using-raspberry-pi-and-opencv
