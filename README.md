@@ -7,7 +7,10 @@ Treshold = Schwellenwert. Die Funktion erlaubt es Bilder binär zu ändern. Schw
 
 
 ToDO:
-1. /etc/default/foo :
+
+1.https://stackoverflow.com/questions/36959031/how-to-source-file-into-python-script
+
+/etc/default/foo :
 
 {"FOO":"path/to/foo"}
 
