@@ -1,22 +1,18 @@
 import mysql.connector
 import json
 
+db = home
 credentials = '/home/pi/cctv/test/credentials.secret'
 
 with open(credentials) as file:
     data = json.load(file)
     hostname = data["host"]
-    password = data["password"]
-    user = data["user"]
+    pwd = data["password"]
+    login = data["user"]
     file.close()
 
-print(hostname)
-print(password)
-print(user)
-
-
 ocr_result='HVL-SE 162'
-cnx = mysql.connector.connect(host='192.168.2.202', user='reader', database='home', password='reader')
+cnx = mysql.connector.connect(host=%s, user=%s, database=db, password=%s) %(hostname, login, pwd) 
 cursor = cnx.cursor()
 
 query = ("SELECT * FROM autokennzeichen")
