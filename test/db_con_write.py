@@ -1,6 +1,20 @@
 import mysql.connector
+import json
+
+db = home
+credentials = '/home/pi/cctv/test/credentials.secret'
+
+with open(credentials) as file:
+    data = json.load(file)
+    hostname = data["host"]
+    pwd = data["password"]
+    login = data["user"]
+    file.close()
+
 ocr_result='HVL-KB 808'
-cnx = mysql.connector.connect(host='192.168.2.202', user='reader', database='home', password='reader')
+
+cnx = mysql.connector.connect(host=%s, user=%s, database=db, password=%s) %(hostname, login, pwd) 
+
 cursor = cnx.cursor()
 
 sql = "Insert into verkehrsdaten (autokennzeichen, description) values (%s, %s)"
