@@ -7,7 +7,7 @@
 import cv2
 import imutils 
 import numpy as np
-
+from PIL import Image
 
 
 path = '/home/pi/cctv/test/test8.jpeg'
@@ -21,21 +21,22 @@ while True:
     img = cv2.imread(path)
     #definition of the REGION OF INTEREST (ROI) 
     img = img[y:y+h, x:x+w]
-    #cv2.imshow("Output", img)
+    cv2.imshow("ROI", img)
     
     #Grayscal the image
     #This speeds up other following process sine we no longer have to deal with the color details when processing an image
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    #cv2.imshow("BGR2GRAY", gray)
+    cv2.imshow("BGR2GRAY", gray)
 
 
     #filtering useless information (bluring)
     gray = cv2.bilateralFilter(gray, 11, 17, 17)
-    #cv2.imshow("bilateralfilter", gray)
+    cv2.imshow("bilateralfilter", gray)
     
     #Edge Detection
-    edged = cv2.Canny(gray, 30, 200)
-    #cv2.imshow("Edge Detection", edged)
+    #default 30, 200
+    edged = cv2.Canny(gray, 15, 80,0)
+    cv2.imshow("Edge Detection", edged)
     
     #looking for contours in our images
     #sorting them from big to small and take over only 10 contours
@@ -57,7 +58,7 @@ while True:
                       break 
     # Masking the part other than the number plate
     mask = np.zeros(gray.shape,np.uint8)
-#to double check
+    cv2.imshow("mask",mask)
     #new_image = cv2.drawContours(mask,[screenCnt],0,255,-1,)
     #new_image = cv2.bitwise_and(img,img,mask=mask)
 
@@ -65,10 +66,11 @@ while True:
     #(x, y) = np.where(mask == 255)
     #(topx, topy) = (np.min(x), np.min(y))
     #(bottomx, bottomy) = (np.max(x), np.max(y))
-    #Cropped = gray[topx:bottomx+1, topy:bottomy+1]
+    #cropped = gray[topx:bottomx+1, topy:bottomy+1]
+    #cv2.imshow("Cropped",Cropped)
     
     #Read the number plate
-    #text = pytesseract.image_to_string(Cropped, config='--psm 11')
+    #text = pytesseract.image_to_string(cropped, config='--psm 11')
     #print("Detected Number is:",text)
 
 
