@@ -23,9 +23,13 @@ while True:
     img = img[y:y+h, x:x+w]
     cv2.imshow("ROI", img)
     
+    # Rescale the image, if needed.
+    rescaled = cv2.resize(img, None, fx=1.5, fy=1.5, interpolation=cv2.INTER_CUBIC)
+    cv2.imshow("BGR2GRAY", rescaled)
+    
     #Grayscal the image
     #This speeds up other following process sine we no longer have to deal with the color details when processing an image
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    gray = cv2.cvtColor(rescaled, cv2.COLOR_BGR2GRAY)
     cv2.imshow("BGR2GRAY", gray)
 
 
