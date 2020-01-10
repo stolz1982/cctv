@@ -24,6 +24,7 @@ while True:
     cv2.imshow("ROI", img)
     
     # Rescale the image, if needed.
+  #toDO --> figure out DPI and ensure more than 300 or even more for ROI
     rescaled = cv2.resize(img, None, fx=1.5, fy=1.5, interpolation=cv2.INTER_CUBIC)
     cv2.imshow("BGR2GRAY", rescaled)
     
@@ -74,6 +75,7 @@ while True:
     #cv2.imshow("Cropped",Cropped)
     
     #Read the number plate
+ #to Do -- test -->  tesseract --psm 13 --oem 1 -l deu page.png 
     #text = pytesseract.image_to_string(cropped, config='--psm 11')
     #print("Detected Number is:",text)
 
